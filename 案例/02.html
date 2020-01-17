@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <style>
+    .button{
+        display:inline-block;
+        background-color:aquamarine;
+        border:none;
+        color:azure;
+        padding: 10px 18px;
+        font-size: 16px;
+        cursor:pointer;
+        border-radius:4px;
+        transition: all 0.5s;
+        margin-top: -10px;
+    }
+
+    .button span{
+        cursor:pointer;
+        display:inline-block;
+        position:relative;
+        transition:0.5s;
+    }
+
+    .button span:after{
+        content:">>";
+        position:absolute;
+        right:-20px;
+        opacity:0;
+        top:0;
+        transition:0.5s;
+    }
+
+    .button:hover span{
+        padding-right: 25px;
+    }
+
+    .button:hover span:after{
+        opacity:1;
+        right:0;
+    }
+    
+    .input{
+        margin-top:10px;
+        margin-bottom: 10px;
+        border:1px solid #ccc;
+        height:27px;
+        padding-top:4px;
+        padding-bottom:4px;
+        border-radius:4px;
+        width:200px;
+        font-size: 20px;
+        font-family:"Times New Roman";
+    }
+    </style>
+</head>
+
+<script>
+function myfunction()
+{
+    var x=document.getElementById("user").value;
+    var y=document.getElementById("password").value;
+    if(x == "" || y == "")
+    {
+        alert("用户名或密码不能为空")
+    }
+    else if(x == "peilei" || y == "123456")
+    {
+        window.location.href="new.html";
+    }
+    else
+    {
+        alert("用户名或密码错误");
+    }
+}
+</script>
+
+<body>
+    <div id="datetime">
+        <script>
+            setInterval("document.getElementById('datetime').innerHTML=new Date().toLocaleString();", 1000);
+        </script>
+    </div>
+    <span class="tip"> 您好，请输入账号密码</br></span>
+    <style type="text/css">
+    .tip{
+        font-size: 36px;
+        font-family: "宋体";
+        line-height: 60px;
+        }
+    </style>
+    <span style="font-size: 18px;font-family:Times New Roman;"> User_name:</br></span>
+    <input class="input" id="user"></br>
+    <span style="font-size: 18px;font-family:Times New Roman;"> Password:</br></span>
+    <input class="input" type="password" id="password"></br></br>
+    <button class="button" onclick="myfunction()"><span>Sign in</span></button>
+</body>
+</html>

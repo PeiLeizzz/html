@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索</title>
+    <style>
+    .search{
+        display: inline-block;
+        background-color: gainsboro;
+        border: none;
+        color: black;
+        padding: 10px 18px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.5s;
+        margin-top: -10px;
+        text-align: center;
+        width: 92px;
+        height: 33px;
+    }
+
+    .search span{
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .search span:after{
+        content: ">>";
+        position: absolute;
+        right: -20px;
+        opacity: 0;
+        top: 0;
+        transition: 0.5s;
+    }
+
+    .search:hover span{
+        padding-right: 25px;
+    }
+
+    .search:hover span:after{
+        opacity: 1;
+        right: 0;
+    }
+
+    .input{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        height: 27px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 4px;
+        width: 1400px;
+        font-size: 20px;
+        font-family: "宋体";
+    }
+
+    .center{
+        text-align: center;
+    }
+
+    .line{
+        padding: 0 20px 0;
+        margin: 20px, 0;
+        line-height: 1px;
+        border-left: 1500px solid #ddd;
+        text-align: center;
+    }
+
+    .ui{
+        list-style: none;
+    }
+
+    .ui li{
+        text-align:  center;
+        font-family:  "Times New Roman";
+        color: rgb(64, 158, 196);
+        width: 150px;
+        float: left;
+    }
+
+    .ui li:hover{
+        cursor: pointer;
+        color: black;
+    }
+
+    .inf{
+        font-family: "Times New Roman";
+        font-size: 15px;
+        margin-left:  50px;
+    }
+
+    .process-unfill{
+        border-radius: 6px;
+        width: 1500px;
+        background-color: #ddd;
+    }
+
+    #process-fill{
+        display:block;
+        border-radius: 6px;
+        width: 70%;
+        background-color:#2d8cf0;
+    }
+
+    .number{
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        display: inline-block;
+        background-color: ghostwhite;
+        border: solid 1px black;
+        width: 40px;
+        height: 30px;
+        color: black;
+    }
+
+    .number span{
+        display: inline-block;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<script>
+function print1(id)
+{
+    var s = document.getElementById(id).innerHTML;
+    document.getElementById("inf").innerHTML = "Welcome to " + s;
+}
+
+function sleep(numberMillis) {
+    var now = new Date();
+    var exitTime = now.getTime() + numberMillis;
+    while (true) {
+        now = new Date();
+        if (now.getTime() > exitTime)
+            return;
+    }
+}
+
+function bar_move(n)
+{
+    var i = 0;
+    while (i <= n)
+    {
+        document.getElementById("process-fill").style.width = i * 15 + "px";
+        i++;
+        sleep(10);
+    }
+}
+
+function search_sth()
+{
+    window.location.href = 'http://cn.bing.com/search?q=' + document.getElementById("input").value;
+}
+</script>
+
+<body>
+    <div id="datetime", class="center">
+        <script>
+            setInterval("document.getElementById('datetime').innerHTML=new Date().toLocaleString();", 1000);
+        </script>
+    </div>
+    <input class="input" id="input">
+    <button class="search" onclick=search_sth()><span>Search</br></span></button>
+    <h1 class="line"></br></h1>
+    <ul class="ui">
+        <li id="m1" onclick="print1(this.id)">Windows Phone</li>
+        <li id="m2" onclick="print1(this.id)">IOS</li>
+        <li id="m3" onclick="print1(this.id)">Android</li>
+    </ul></br>
+    <h1 id="inf" class="inf"></h1>
+    <div class="process-unfill">
+        <div id="process-fill">66</div>
+    </div>
+    <button class="number" onclick="bar_move(10)"><span>10</span></button>
+    <button class="number" onclick="bar_move(30)"><span>30</span></button>
+    <button class="number" onclick="bar_move(50)"><span>50</span></button>
+    <button class="number" onclick="bar_move(70)"><span>70</span></button>
+    <button class="number" onclick="bar_move(90)"><span>90</span></button>
+</body>
+</html>
