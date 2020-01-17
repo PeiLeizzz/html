@@ -106,10 +106,11 @@
         border-radius: 6px;
         width: 70%;
         background-color:#2d8cf0;
+        color:#2d8cf0;
     }
 
     .number{
-        margin-top: 20px;
+        margin-top: 10px;
         cursor: pointer;
         border-radius: 4px;
         display: inline-block;
@@ -128,31 +129,17 @@
 </head>
 
 <script>
+setInterval("document.getElementById('datetime').innerHTML=new Date().toLocaleString();", 1000);
+
 function print1(id)
 {
     var s = document.getElementById(id).innerHTML;
     document.getElementById("inf").innerHTML = "Welcome to " + s;
 }
 
-function sleep(numberMillis) {
-    var now = new Date();
-    var exitTime = now.getTime() + numberMillis;
-    while (true) {
-        now = new Date();
-        if (now.getTime() > exitTime)
-            return;
-    }
-}
-
 function bar_move(n)
 {
-    var i = 0;
-    while (i <= n)
-    {
-        document.getElementById("process-fill").style.width = i * 15 + "px";
-        i++;
-        sleep(10);
-    }
+        document.getElementById("process-fill").style.width = n * 15 + "px";
 }
 
 function search_sth()
@@ -162,11 +149,7 @@ function search_sth()
 </script>
 
 <body>
-    <div id="datetime", class="center">
-        <script>
-            setInterval("document.getElementById('datetime').innerHTML=new Date().toLocaleString();", 1000);
-        </script>
-    </div>
+    <div id="datetime" class="center"></div>
     <input class="input" id="input">
     <button class="search" onclick=search_sth()><span>Search</br></span></button>
     <h1 class="line"></br></h1>
@@ -176,9 +159,11 @@ function search_sth()
         <li id="m3" onclick="print1(this.id)">Android</li>
     </ul></br>
     <h1 id="inf" class="inf"></h1>
+    <h1 class="line"></br></h1>
     <div class="process-unfill">
         <div id="process-fill">66</div>
     </div>
+    <h1 class="line"></br></h1>
     <button class="number" onclick="bar_move(10)"><span>10</span></button>
     <button class="number" onclick="bar_move(30)"><span>30</span></button>
     <button class="number" onclick="bar_move(50)"><span>50</span></button>
